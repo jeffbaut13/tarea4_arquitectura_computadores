@@ -12,10 +12,17 @@ TASM/TLINK son herramientas antiguas de Borland y MASM/LINK pertenecen a la
 cadena de herramientas de Microsoft para Windows. No es necesario instalar
 ninguna de ellas para realizar las pruebas de esta guía.
 
+Importante: editar un archivo `.ASM` no actualiza automáticamente su `.EXE`.
+Para probar cambios de código, compila y enlaza otra vez, o descarga con
+`git pull` la versión más reciente del repositorio, que incluye los
+ejecutables recompilados.
+
 ## 1. Preparar las carpetas
 
-1. Descarga o clona este repositorio y ubica la carpeta del proyecto. En este
-   equipo, la ruta actual es:
+1. Descarga o clona este repositorio y ubica la carpeta del proyecto. Si ya
+   tienes una copia, abre Terminal en esa carpeta y ejecuta `git pull` para
+   obtener el código corregido y sus ejecutables actualizados. En este equipo,
+   la ruta actual es:
    `/Users/jeferssonbautista/Documents/unad/tarea4-arq-computadores`
 2. Abre Terminal y ejecuta DOSBox Staging montando el proyecto como `C:`:
 

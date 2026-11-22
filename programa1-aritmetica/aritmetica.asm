@@ -171,11 +171,11 @@ ReadHexInvalid:
 ReadHexByte ENDP
 
 HexToNibble PROC
-    and al, 0DFh
     cmp al, '0'
     jb HexInvalid
     cmp al, '9'
     jbe HexDecimal
+    and al, 0DFh
     cmp al, 'A'
     jb HexInvalid
     cmp al, 'F'
