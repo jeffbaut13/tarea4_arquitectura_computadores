@@ -1,0 +1,10 @@
+.DS_Store
+*.obj
+*.OBJ
+*.exe
+*.EXE
+*.map
+*.lst
+screenshots/
+*.pdf
+*.PDF
