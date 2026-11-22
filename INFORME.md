@@ -19,6 +19,8 @@ interrupt `21h`, and returns control to DOS with function `4Ch`.
 The source files are organized in separate folders so each exercise can be
 assembled and tested independently. The console evidence is kept in the local
 `screenshots/` folder and is intentionally excluded from the source repository.
+Precompiled DOS executables are also included beside each source file, so the
+programs can be tested in DOSBox without separately obtaining an assembler.
 The source code and this report are published at
 <https://github.com/jeffbaut13/tarea4_arquitectura_computadores>. A Spanish
 execution and testing guide is available in `GUIA_EJECUCION.md`.
@@ -44,7 +46,8 @@ services.
 
 ### Program 1 — Direct hexadecimal arithmetic
 
-Source: `programa1-aritmetica/aritmetica.asm`.
+Source and DOS executable: `programa1-aritmetica/aritmetica.asm` and
+`programa1-aritmetica/aritmetica.exe`.
 
 The input helper reads exactly two hexadecimal characters per operand,
 converts each nibble, and combines them into a byte. `AL` carries the first
@@ -62,7 +65,8 @@ produces `-11h` with borrow.
 
 ### Program 2 — Logical mask operator
 
-Source: `programa2-mascaras/mascaras.asm`.
+Source and DOS executable: `programa2-mascaras/mascaras.asm` and
+`programa2-mascaras/mascaras.exe`.
 
 The program accepts a byte and an operation selector. `AND 0Fh` clears the
 high nibble, `OR 80h` sets the most significant bit, and `XOR 0Fh` toggles the
@@ -78,7 +82,8 @@ Exactly eight result bits are printed.
 
 ### Program 3 — Automatic base-16 counter
 
-Source: `programa3-contador/contador.asm`.
+Source and DOS executable: `programa3-contador/contador.asm` and
+`programa3-contador/contador.exe`.
 
 `BL` holds the current value and `CX` is initialized to 16 iterations.
 `CMP` and `JBE` select the ASCII conversion for decimal digits versus `A`–`F`.

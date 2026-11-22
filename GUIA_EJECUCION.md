@@ -1,86 +1,59 @@
 # Guía para compilar, ejecutar y tomar las capturas
 
-Esta guía está pensada para macOS con DOSBox Staging. Los fuentes se compilan
-dentro de DOSBox con TASM/TLINK o MASM/LINK. DOSBox es solamente el emulador:
-necesitas tener los ejecutables del ensamblador y del enlazador en una carpeta
-local que puedas usar legalmente. No se distribuyen esas herramientas junto con
-el código.
+Esta guía está pensada para macOS con DOSBox Staging. **No necesitas buscar ni
+descargar `TASM.EXE`, `TLINK.EXE`, `ML.EXE` ni `LINK.EXE` para probar esta
+entrega.** Esos nombres son herramientas de ensamblado y enlace, no son los
+tres programas de la tarea. Los tres ejecutables DOS ya compilados
+(`aritmetica.exe`, `mascaras.exe` y `contador.exe`) están incluidos en sus
+carpetas junto al código fuente. Basta con abrirlos con DOSBox siguiendo el
+paso 1 y continuar con la sección 2.
+
+TASM/TLINK son herramientas antiguas de Borland y MASM/LINK pertenecen a la
+cadena de herramientas de Microsoft para Windows. No es necesario instalar
+ninguna de ellas para realizar las pruebas de esta guía.
 
 ## 1. Preparar las carpetas
 
 1. Descarga o clona este repositorio y ubica la carpeta del proyecto. En este
    equipo, la ruta actual es:
    `/Users/jeferssonbautista/Documents/unad/tarea4-arq-computadores`
-2. Coloca `TASM.EXE` y `TLINK.EXE` juntos en una carpeta local, por ejemplo
-   `/Users/jeferssonbautista/tasm`. Para MASM, coloca `ML.EXE` y `LINK.EXE`
-   juntos en una carpeta local, por ejemplo
-   `/Users/jeferssonbautista/masm`.
-3. Abre Terminal y ejecuta DOSBox Staging montando el proyecto como `C:` y la
-   carpeta del ensamblador como `D:`:
+2. Abre Terminal y ejecuta DOSBox Staging montando el proyecto como `C:`:
 
    ```sh
    "$HOME/Applications/DOSBox Staging.app/Contents/MacOS/dosbox" \
      --noprimaryconf \
-     -c "mount c /Users/jeferssonbautista/Documents/unad/tarea4-arq-computadores" \
-     -c "mount d /Users/jeferssonbautista/tasm" \
+     -c "mount c /RUTA/AL/PROYECTO" \
      -c "c:"
    ```
 
-   Si usas MASM, reemplaza la ruta de montaje de `D:` por
-   `/Users/jeferssonbautista/masm`. En Windows, abre DOSBox, monta la carpeta del
-   proyecto con `mount c <ruta-del-proyecto>` y la carpeta de TASM/MASM con
-   `mount d <ruta-del-ensamblador>`.
+   Sustituye `/RUTA/AL/PROYECTO` por la ruta donde está la carpeta descargada
+   (en este equipo, `/Users/jeferssonbautista/Documents/unad/tarea4-arq-computadores`).
+   En Windows, abre DOSBox y monta esa carpeta con
+   `mount c <ruta-del-proyecto>`.
 
-## 2. Compilar y ejecutar con TASM/TLINK
+## 2. Ejecutar los programas incluidos
 
-En la consola de DOSBox, escribe estos comandos para el programa 1:
+En la consola de DOSBox, ejecuta cada programa desde su carpeta:
 
 ```text
 C:
 CD \programa1-aritmetica
-D:\TASM /m2 aritmetica.asm
-D:\TLINK aritmetica.obj
 aritmetica.exe
 ```
-
-Repite para los programas 2 y 3; cambia la carpeta y los nombres:
 
 ```text
 C:
 CD \programa2-mascaras
-D:\TASM /m2 mascaras.asm
-D:\TLINK mascaras.obj
 mascaras.exe
 ```
 
 ```text
 C:
 CD \programa3-contador
-D:\TASM /m2 contador.asm
-D:\TLINK contador.obj
 contador.exe
 ```
 
-Si tu distribución ubica los ejecutables en una subcarpeta, ajusta `D:\TASM`
-y `D:\TLINK` a sus rutas DOS reales. Al compilar, verifica que no se informen
-errores; cada programa queda como un `.EXE` en su carpeta del proyecto.
-
-## 3. Compilar con MASM/LINK (alternativa)
-
-Desde el directorio correspondiente en DOSBox, usa:
-
-```text
-D:\ML /c aritmetica.asm
-D:\LINK aritmetica.obj
-aritmetica.exe
-```
-
-Para los otros ejercicios sustituye `aritmetica` por `mascaras` o `contador`.
-Si tu versión de MASM requiere opciones o librerías distintas para el enlace,
-usa los comandos de su distribución; el programa no depende de bibliotecas de
-alto nivel.
-
-## 4. Casos de prueba y resultado esperado
+## 3. Casos de prueba y resultado esperado
 
 ### Programa 1 — Aritmética hexadecimal
 
@@ -113,7 +86,7 @@ Ejecuta `contador.exe`. Debe mostrar una sola línea con los 16 símbolos:
 0 1 2 3 4 5 6 7 8 9 A B C D E F
 ```
 
-## 5. Tomar las capturas
+## 4. Tomar las capturas
 
 1. Crea una carpeta `screenshots` en la carpeta raíz del proyecto.
 2. Captura la ventana de DOSBox cuando se vea el resultado completo de cada
@@ -129,3 +102,12 @@ Ejecuta `contador.exe`. Debe mostrar una sola línea con los 16 símbolos:
 4. Incluye las imágenes en tu copia local del informe si vas a entregar el
    informe completo. La carpeta de capturas está excluida intencionalmente de
    Git y no se sube al repositorio.
+
+## 5. Volver a compilar (opcional)
+
+Solo necesitas esta sección si modificas los fuentes. Se requiere un
+ensamblador compatible con MASM/TASM y un enlazador OMF configurados en DOS.
+Por ejemplo, con TASM/TLINK instalados en una unidad `D:`, desde la carpeta de
+cada fuente ejecuta `D:\TASM /m2 nombre.asm` y `D:\TLINK nombre.obj`. Las
+herramientas no se incluyen en el repositorio. Después de compilar, ejecuta el
+`.EXE` generado como se muestra arriba.

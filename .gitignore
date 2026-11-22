@@ -3,6 +3,9 @@
 *.OBJ
 *.exe
 *.EXE
+!programa1-aritmetica/aritmetica.exe
+!programa2-mascaras/mascaras.exe
+!programa3-contador/contador.exe
 *.map
 *.lst
 screenshots/
